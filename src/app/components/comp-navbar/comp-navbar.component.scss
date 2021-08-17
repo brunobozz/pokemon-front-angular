@@ -1,0 +1,16 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+
+  &-brand {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      height: 27px;
+      margin-right: 5px;
+    }
+  }
+}
