@@ -1,0 +1,5 @@
+<ul *ngIf="pokemonList.length !== 0" class="list-group">
+  <li *ngFor="let pokemon of pokemonList.results" class="list-group-item">
+    {{ pokemon.name }}
+  </li>
+</ul>

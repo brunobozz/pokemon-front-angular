@@ -10,6 +10,11 @@ import { ToastrModule } from 'ngx-toastr';
 
 //DECLARATIONS
 import { AppComponent } from './app.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { CompCarouselComponent } from './components/comp-carousel/comp-carousel.component';
+import { CompNavbarComponent } from './components/comp-navbar/comp-navbar.component';
+import { PagePokemonListComponent } from './pages/page-pokemon-list/page-pokemon-list.component';
+import { CompListGroupComponent } from './components/comp-list-group/comp-list-group.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: true,
@@ -23,7 +28,7 @@ const toastrConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageHomeComponent, CompCarouselComponent, CompNavbarComponent, PagePokemonListComponent, CompListGroupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
