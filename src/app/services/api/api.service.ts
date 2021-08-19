@@ -13,4 +13,8 @@ export class ApiService {
   public getInfo(endPoint: string) {
     return this.http.get(this.API_URL + endPoint);
   }
+
+  public getEndpoint(endPoint: string) {
+    return this.http.get(endPoint);
+  }
 }
