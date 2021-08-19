@@ -1,5 +1,19 @@
 <ul *ngIf="pokemonList.length !== 0" class="list-group">
-  <li *ngFor="let pokemon of pokemonList.results" class="list-group-item">
-    {{ pokemon.name }}
+  <li
+    *ngFor="let pokemon of pokemonList; let i = index"
+    class="list-group-item"
+    (click)="goToPokemon(i + 1)"
+  >
+    {{ i + 1 }} - {{ pokemon.name }}
   </li>
 </ul>
+<div class="text-center mt-4 mb-4">
+  <button
+    class="btn btn-primary text-center"
+    style="min-width: 200px"
+    (click)="getPokemonList(endpoint)"
+  >
+    <i *ngIf="loading" class="fa fa-spinner fa-pulse"></i>
+    <span *ngIf="!loading"> Carregar mais</span>
+  </button>
+</div>

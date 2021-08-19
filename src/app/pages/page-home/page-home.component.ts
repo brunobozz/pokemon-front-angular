@@ -7,18 +7,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./page-home.component.scss'],
 })
 export class PageHomeComponent implements OnInit {
-  public pokemonList: any = [];
-
   constructor(private api: ApiService) {}
 
-  ngOnInit(): void {
-    this.getPokemonList();
-  }
-
-  private getPokemonList() {
-    this.api.getInfo('pokemon').subscribe((data) => {
-      this.pokemonList = data;
-      console.log(this.pokemonList.results);
-    });
-  }
+  ngOnInit(): void {}
 }

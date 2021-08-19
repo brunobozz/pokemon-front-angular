@@ -15,6 +15,7 @@ import { CompCarouselComponent } from './components/comp-carousel/comp-carousel.
 import { CompNavbarComponent } from './components/comp-navbar/comp-navbar.component';
 import { PagePokemonListComponent } from './pages/page-pokemon-list/page-pokemon-list.component';
 import { CompListGroupComponent } from './components/comp-list-group/comp-list-group.component';
+import { PagePokemonComponent } from './pages/page-pokemon/page-pokemon.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: true,
@@ -28,7 +29,7 @@ const toastrConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, PageHomeComponent, CompCarouselComponent, CompNavbarComponent, PagePokemonListComponent, CompListGroupComponent],
+  declarations: [AppComponent, PageHomeComponent, CompCarouselComponent, CompNavbarComponent, PagePokemonListComponent, CompListGroupComponent, PagePokemonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

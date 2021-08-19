@@ -1,0 +1,8 @@
+<section *ngIf="dadosPokemon.length !== 0">
+  <div class="d-flex align-items-center">
+    <img height="80" [src]="dadosPokemon.sprites.front_default" />
+    <h2 style="text-transform: capitalize">
+      {{ dadosPokemon.name }}
+    </h2>
+  </div>
+</section>
