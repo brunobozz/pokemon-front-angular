@@ -39,14 +39,11 @@ export class PagePokemonListComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
-    let tracker = event.target;
     let value = event.target.documentElement.scrollHeight;
     let limit =
-      tracker.documentElement.scrollHeight -
-      tracker.documentElement.clientHeight;
-
-    console.log(event.target.documentElement.scrollTop, limit);
-    if (event.target.documentElement.scrollTop === limit) {
+      event.target.documentElement.scrollHeight -
+      event.target.documentElement.clientHeight;
+    if (value === limit) {
       this.getPokemonList(this.dados.next);
     }
   }
