@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -30,7 +30,16 @@ export class PagePokemonListComponent implements OnInit {
   }
 
   public goToPokemon(id: number) {
-    console.log(id);
     this.router.navigateByUrl('pokemon/' + id);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: any) {
+    let tracker = event.target.documentElement;
+    let value = tracker.scrollTop;
+    let limit = tracker.scrollHeight - tracker.clientHeight;
+    if (value === limit) {
+      this.getPokemonList(this.dados.next);
+    }
   }
 }

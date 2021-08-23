@@ -29,7 +29,15 @@ const toastrConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, PageHomeComponent, CompCarouselComponent, CompNavbarComponent, PagePokemonListComponent, CompListGroupComponent, PagePokemonComponent],
+  declarations: [
+    AppComponent,
+    PageHomeComponent,
+    CompCarouselComponent,
+    CompNavbarComponent,
+    PagePokemonListComponent,
+    CompListGroupComponent,
+    PagePokemonComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
