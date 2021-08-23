@@ -1,8 +1,55 @@
 <section *ngIf="dadosPokemon.length !== 0">
-  <div class="d-flex align-items-center">
-    <img height="80" [src]="dadosPokemon.sprites.front_default" />
-    <h2 style="text-transform: capitalize">
-      {{ dadosPokemon.name }}
-    </h2>
+  <div class="d-flex justify-content-center align-items-center">
+    <button
+      class="btn btn-danger me-2"
+      (click)="changePokemon(dadosPokemon.id - 1)"
+    >
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <div class="card" style="width: 30rem">
+      <img
+        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{
+          pokemonId
+        }}.png"
+        class="card-img-top"
+        alt="Pokémon"
+      />
+      <div class="card-body">
+        <h1 class="card-title text-capitalize">
+          #{{ dadosPokemon.id }} - {{ dadosPokemon.name }}
+        </h1>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
+            <b>Type: </b>
+            <img
+              *ngFor="let type of dadosPokemon.types"
+              src="../../assets/icons/type/{{ type.type.name }}.svg"
+              title="{{ type.type.name }}"
+              height="26px"
+            />
+          </li>
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
+            <b>Abilities: </b>
+            <span *ngFor="let abil of dadosPokemon.abilities">
+              {{ abil.ability.name }},
+            </span>
+          </li>
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
+            <b>Height: </b>
+            <span>{{ dadosPokemon.height }}</span>
+          </li>
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
+            <b>Weight: </b>
+            <span>{{ dadosPokemon.weight }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      class="btn btn-danger ms-2"
+      (click)="changePokemon(dadosPokemon.id + 1)"
+    >
+      <i class="fa fa-chevron-right"></i>
+    </button>
   </div>
 </section>
