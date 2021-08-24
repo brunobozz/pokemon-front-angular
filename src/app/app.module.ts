@@ -16,6 +16,7 @@ import { CompNavbarComponent } from './components/comp-navbar/comp-navbar.compon
 import { PagePokemonListComponent } from './pages/page-pokemon-list/page-pokemon-list.component';
 import { CompListGroupComponent } from './components/comp-list-group/comp-list-group.component';
 import { PagePokemonComponent } from './pages/page-pokemon/page-pokemon.component';
+import { CompLoadingComponent } from './components/comp-loading/comp-loading.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: true,
@@ -37,6 +38,7 @@ const toastrConfig = {
     PagePokemonListComponent,
     CompListGroupComponent,
     PagePokemonComponent,
+    CompLoadingComponent,
   ],
   imports: [
     BrowserModule,
