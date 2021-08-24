@@ -1,0 +1,57 @@
+@import "./variables";
+
+$theme-colors: (
+  "primary": $pokeRed,
+  "secondary": $pokeGray,
+  "success": $success,
+  "danger": $danger,
+  "info": $info,
+  "warning": $warning,
+);
+
+$custom-colors: (
+  //types
+  "type-bug": $typeBug,
+  "type-dark": $typeDark,
+  "type-dragon": $typeDragon,
+  "type-electric": $typeElectric,
+  "type-fairy": $typeFairy,
+  "type-fighting": $typeFighting,
+  "type-fire": $typeFire,
+  "type-flying": $typeFlying,
+  "type-ghost": $typeGhost,
+  "type-grass": $typeGrass,
+  "type-ground": $typeGround,
+  "type-ice": $typeIce,
+  "type-normal": $typeNormal,
+  "type-poison": $typePoison,
+  "type-psychic": $typePsychic,
+  "type-rock": $typeRock,
+  "type-shadow": $typeShadow,
+  "type-steel": $typeSteel,
+  "type-water": $typeWater,
+  //cinzas
+  "preto": $preto,
+  "cinza200": $cinza200,
+  "cinza300": $cinza300,
+  "cinza400": $cinza400,
+  "branco": $branco
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// radio buttom color
+// $component-active-bg: $laranja200;
+
+// accordion colors
+// $accordion-button-active-bg: $verde400;
+// $accordion-button-active-color: $verde100;
+
+// $font-sizes: (
+//   1: $h1-font-size,
+//   2: $h2-font-size,
+//   3: $h3-font-size,
+//   4: $h4-font-size,
+//   5: $h5-font-size,
+//   6: $h6-font-size,
+// );

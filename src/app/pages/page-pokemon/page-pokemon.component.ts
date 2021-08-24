@@ -8,8 +8,10 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./page-pokemon.component.scss'],
 })
 export class PagePokemonComponent implements OnInit {
+  public loading = false;
   public endpoint: string = '';
   public dadosPokemon: any = [];
+  public location: any = [];
   public pokemonId = '';
 
   constructor(
@@ -25,10 +27,11 @@ export class PagePokemonComponent implements OnInit {
   }
 
   public getPokemon(endpoint: string) {
+    this.loading = true;
     this.api.getEndpoint(endpoint).subscribe((data) => {
       this.dadosPokemon = data;
-      console.log(this.dadosPokemon);
       this.convertPokemonId(this.dadosPokemon.id);
+      this.loading = false;
     });
   }
 
