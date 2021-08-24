@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-page-pokemon',
@@ -8,7 +9,6 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./page-pokemon.component.scss'],
 })
 export class PagePokemonComponent implements OnInit {
-  public loading = false;
   public endpoint: string = '';
   public dadosPokemon: any = [];
   public location: any = [];
@@ -17,7 +17,8 @@ export class PagePokemonComponent implements OnInit {
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private loading: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -27,11 +28,12 @@ export class PagePokemonComponent implements OnInit {
   }
 
   public getPokemon(endpoint: string) {
-    this.loading = true;
+    this.loading.toggle(true);
     this.api.getEndpoint(endpoint).subscribe((data) => {
       this.dadosPokemon = data;
       this.convertPokemonId(this.dadosPokemon.id);
-      this.loading = false;
+      this.loading.toggle(false);
+
     });
   }
 
