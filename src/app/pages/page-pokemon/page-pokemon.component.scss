@@ -1,0 +1,16 @@
+.card {
+  &-title {
+    margin: 0;
+  }
+  &-img {
+    border-radius: 0;
+    img {
+      border-radius: 0;
+    }
+  }
+  .card-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,55 +1,86 @@
 <section *ngIf="dadosPokemon.length !== 0 || loading">
   <div class="d-flex justify-content-center align-items-center">
-    <button
-      class="btn btn-danger me-2"
-      (click)="changePokemon(dadosPokemon.id - 1)"
-    >
-      <i class="fa fa-chevron-left"></i>
-    </button>
-    <div class="card" style="width: 30rem">
-      <img
-        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{
-          pokemonId
-        }}.png"
-        class="card-img-top"
-        alt="Pokémon"
-      />
+    <div class="card mb-4 border-0 bg-light" style="width: 30rem">
+      <div
+        class="
+          card-header
+          d-flex
+          justify-content-between
+          align-items-center
+        "
+      >
+        <i
+          class="fa fa-chevron-left"
+          (click)="changePokemon(dadosPokemon.id - 1)"
+        ></i>
+        <h5 class="card-title text-capitalize">
+          {{ dadosPokemon.name }}
+        </h5>
+        <i
+          class="fa fa-chevron-right"
+          (click)="changePokemon(dadosPokemon.id + 1)"
+        ></i>
+      </div>
+      <div class="card-img">
+        <img
+          src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{
+            pokemonId
+          }}.png"
+          class="card-img-top bg-type-{{ dadosPokemon.types[0].type.name }}"
+          alt="Pokémon"
+        />
+      </div>
       <div class="card-body">
-        <h1 class="card-title text-capitalize">
-          #{{ dadosPokemon.id }} - {{ dadosPokemon.name }}
-        </h1>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
-            <b>Type: </b>
-            <img
-              *ngFor="let type of dadosPokemon.types"
-              src="../../assets/icons/type/{{ type.type.name }}.svg"
-              title="{{ type.type.name }}"
-              height="26px"
-            />
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+            <b>Number: </b>
+            <span class="badge bg-cinza200">#{{ dadosPokemon.id }}</span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
-            <b>Abilities: </b>
-            <span *ngFor="let abil of dadosPokemon.abilities">
-              {{ abil.ability.name }},
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+            <b>Type: </b>
+            <span
+              *ngFor="let type of dadosPokemon.types"
+              class="text-capitalize"
+            >
+              <img
+                src="../../assets/icons/type/{{ type.type.name }}.svg"
+                style="height: 24px"
+                title="{{ type.type.name }}"
+              />
+              <span
+                style="margin-right: 5px"
+                class="text-type-{{ type.type.name }}"
+              >
+                {{ type.type.name }}
+              </span>
             </span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
-            <b>Height: </b>
-            <span>{{ dadosPokemon.height }}</span>
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+            <b>Abilities: </b><br />
+            <span
+              *ngFor="let abil of dadosPokemon.abilities"
+              class="text-capitalize"
+            >
+              <i class="fa fa-star text-warning"></i>
+              <span> {{ abil.ability.name }} </span>
+              <i *ngIf="abil.is_hidden" class="fa fa-eye text-cinza200"></i>
+              <i
+                *ngIf="!abil.is_hidden"
+                class="fa fa-eye-slash text-cinza200"
+              ></i>
+              <br />
+            </span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2">
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+            <b>Height: </b>
+            <span>{{ dadosPokemon.height }} f</span>
+          </li>
+          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
             <b>Weight: </b>
-            <span>{{ dadosPokemon.weight }}</span>
+            <span>{{ dadosPokemon.weight }} lbs.</span>
           </li>
         </ul>
       </div>
     </div>
-    <button
-      class="btn btn-danger ms-2"
-      (click)="changePokemon(dadosPokemon.id + 1)"
-    >
-      <i class="fa fa-chevron-right"></i>
-    </button>
   </div>
 </section>
