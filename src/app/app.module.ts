@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -17,6 +17,7 @@ import { PagePokemonListComponent } from './pages/page-pokemon-list/page-pokemon
 import { CompListGroupComponent } from './components/comp-list-group/comp-list-group.component';
 import { PagePokemonComponent } from './pages/page-pokemon/page-pokemon.component';
 import { CompLoadingComponent } from './components/comp-loading/comp-loading.component';
+import { LoadingInterceptorService } from './services/loading/loading-interceptor.service';
 
 const maskConfig: Partial<IConfig> = {
   validation: true,
@@ -48,7 +49,13 @@ const toastrConfig = {
     NgxMaskModule.forRoot(maskConfig),
     ToastrModule.forRoot(toastrConfig),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

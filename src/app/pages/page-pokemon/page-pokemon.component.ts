@@ -28,12 +28,9 @@ export class PagePokemonComponent implements OnInit {
   }
 
   public getPokemon(endpoint: string) {
-    this.loading.toggle(true);
     this.api.getEndpoint(endpoint).subscribe((data) => {
       this.dadosPokemon = data;
       this.convertPokemonId(this.dadosPokemon.id);
-      this.loading.toggle(false);
-
     });
   }
 
