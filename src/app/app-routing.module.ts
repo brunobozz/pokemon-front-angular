@@ -7,7 +7,7 @@ import { PagePokemonComponent } from './pages/page-pokemon/page-pokemon.componen
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'pokemon-list',
     pathMatch: 'full',
   },
   {
