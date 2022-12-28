@@ -1,13 +1,28 @@
-<ul *ngIf="pokemonList.length !== 0" class="list-group">
-  <li
-    *ngFor="let pokemon of pokemonList; let i = index"
-    class="list-group-item"
-    (click)="goToPokemon(i + 1)"
-  >
-    {{ i + 1 }} - {{ pokemon.name }}
-  </li>
+<div class="search p-3">
+  <input
+    [(ngModel)]="searchPokemon"
+    type="pokemon"
+    class="form-control"
+    id="search"
+    placeholder="Search Pokémon"
+  />
+</div>
+
+<ul *ngIf="pokemonList.length !== 0" class="list-group list-group-flush">
+  <ng-container *ngFor="let pokemon of pokemonList; let i = index">
+    <li
+      *ngIf="pokemon.name.includes(searchPokemon)"
+      class="pokemon list-group-item d-flex justify-content-between align-items-center"
+      (click)="goToPokemon(i + 1)"
+    >
+      <span
+        >{{ i + 1 }} -
+        <span class="pokemon-name">{{ pokemon.name }}</span></span
+      >
+    </li>
+  </ng-container>
 </ul>
-<div class="text-center mt-4 mb-4">
+<!-- <div class="text-center mt-4 mb-4">
   <button
     class="btn btn-primary text-center"
     style="min-width: 200px"
@@ -16,4 +31,4 @@
     <i *ngIf="loading" class="fa fa-spinner fa-pulse"></i>
     <span *ngIf="!loading"> Carregar mais</span>
   </button>
-</div>
+</div> -->

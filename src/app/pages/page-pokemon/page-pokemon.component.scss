@@ -1,16 +1,81 @@
+.pokebg {
+  min-height: 100%;
+}
+
+.pokebg::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .card {
-  &-title {
-    margin: 0;
+  position: relative;
+  &-name {
+    position: relative;
   }
+  &-name::before {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &-title {
+    position: relative;
+    margin: 0;
+    color: #fff;
+  }
+
   &-img {
+    position: relative;
     border-radius: 0;
+
+    &-actions {
+      position: absolute;
+      width: 90%;
+      margin: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+      margin-top: 50%;
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+
+      i {
+        cursor: pointer;
+      }
+    }
+
     img {
+      position: relative;
       border-radius: 0;
     }
   }
-  .card-buttons {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+
+  .list-group-item {
+    background-color: transparent;
+    position: relative;
+    color: #fff;
+
+    &::before {
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    * {
+      position: relative;
+    }
   }
 }

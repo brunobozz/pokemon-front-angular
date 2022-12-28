@@ -1,47 +1,50 @@
-<section *ngIf="dadosPokemon.length !== 0">
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="card mb-4 border-0 bg-light" style="width: 30rem">
-      <div
-        class="
-          card-header
-          d-flex
-          justify-content-between
-          align-items-center
-        "
-      >
-        <i
-          class="fa fa-chevron-left"
-          (click)="changePokemon(dadosPokemon.id - 1)"
-        ></i>
-        <h5 class="card-title text-capitalize">
-          {{ dadosPokemon.name }}
-        </h5>
-        <i
-          class="fa fa-chevron-right"
-          (click)="changePokemon(dadosPokemon.id + 1)"
-        ></i>
-      </div>
-      <div class="card-img">
-        <img
-          src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{
-            pokemonId
-          }}.png"
-          class="card-img-top bg-type-{{ dadosPokemon.types[0].type.name }}"
-          alt="Pokémon"
-        />
-      </div>
-      <div class="card-body">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
-            <b>Number: </b>
-            <span class="badge bg-cinza200">#{{ dadosPokemon.id }}</span>
-          </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+<div class="pokebg bg-type-{{ pokemon.types[0].type.name }}">
+  <section *ngIf="pokemon">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="card border-0">
+        <div
+          class="card-name d-flex justify-content-between p-3 align-items-center bg-type-{{
+            pokemon.types[0].type.name
+          }}"
+        >
+          <h5 class="card-title text-capitalize">
+            {{ pokemon.id }} - {{ pokemon.name }}
+          </h5>
+          <button
+            class="btn"
+            routerLink="/pokemon-list"
+            style="position: relative"
+          >
+            <i class="fa fa-search text-light"></i>
+          </button>
+        </div>
+        <div class="card-img">
+          <div class="card-img-actions">
+            <i
+              class="fa fa-chevron-left"
+              (click)="changePokemon(pokemon.id - 1)"
+            ></i>
+            <i
+              class="fa fa-chevron-right"
+              (click)="changePokemon(pokemon.id + 1)"
+            ></i>
+          </div>
+          <img
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{
+              pokemonId
+            }}.png"
+            class="card-img-top bg-type-{{ pokemon.types[0].type.name }}"
+            alt="Pokémon"
+          />
+        </div>
+        <ul
+          class="list-group list-group-flush bg-type-{{
+            pokemon.types[0].type.name
+          }}"
+        >
+          <li class="list-group-item">
             <b>Type: </b>
-            <span
-              *ngFor="let type of dadosPokemon.types"
-              class="text-capitalize"
-            >
+            <span *ngFor="let type of pokemon.types" class="text-capitalize">
               <img
                 src="../../assets/icons/type/{{ type.type.name }}.svg"
                 style="height: 24px"
@@ -49,38 +52,37 @@
               />
               <span
                 style="margin-right: 5px"
-                class="text-type-{{ type.type.name }}"
               >
                 {{ type.type.name }}
               </span>
             </span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+          <li class="list-group-item">
             <b>Abilities: </b><br />
             <span
-              *ngFor="let abil of dadosPokemon.abilities"
+              *ngFor="let abil of pokemon.abilities"
               class="text-capitalize"
             >
               <i class="fa fa-star text-warning"></i>
               <span> {{ abil.ability.name }} </span>
-              <i *ngIf="abil.is_hidden" class="fa fa-eye text-cinza200"></i>
               <i
                 *ngIf="!abil.is_hidden"
-                class="fa fa-eye-slash text-cinza200"
+                class="fa fa-eye-slash"
+                title="Hidden Ability"
               ></i>
               <br />
             </span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+          <li class="list-group-item">
             <b>Height: </b>
-            <span>{{ dadosPokemon.height }} f</span>
+            <span>{{ pokemon.height }} f</span>
           </li>
-          <li class="list-group-item ps-0 pe-0 pt-2 pb-2 bg-light">
+          <li class="list-group-item">
             <b>Weight: </b>
-            <span>{{ dadosPokemon.weight }} lbs.</span>
+            <span>{{ pokemon.weight }} lbs.</span>
           </li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
