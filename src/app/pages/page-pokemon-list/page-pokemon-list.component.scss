@@ -1,0 +1,17 @@
+.search {
+  background-color: #cc1717;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  input {
+    border-radius: 25px;
+    border: 0;
+  }
+}
+
+.pokemon {
+  &-name {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+}

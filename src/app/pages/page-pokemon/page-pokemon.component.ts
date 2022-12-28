@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
-import { LoadingService } from 'src/app/services/loading/loading.service';
+import { typeColors } from './pokemon-colors';
 
 @Component({
   selector: 'app-page-pokemon',
@@ -10,15 +11,17 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
 })
 export class PagePokemonComponent implements OnInit {
   public endpoint: string = '';
-  public dadosPokemon: any = [];
+  public pokemon: any = [];
   public location: any = [];
   public pokemonId = '';
+  private typeColors = typeColors;
 
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private loading: LoadingService
+    private titleService: Title,
+    private metaService: Meta
   ) {}
 
   ngOnInit(): void {
@@ -29,8 +32,10 @@ export class PagePokemonComponent implements OnInit {
 
   public getPokemon(endpoint: string) {
     this.api.getEndpoint(endpoint).subscribe((data) => {
-      this.dadosPokemon = data;
-      this.convertPokemonId(this.dadosPokemon.id);
+      this.pokemon = data;
+      this.convertPokemonId(this.pokemon.id);
+      this.chageIndex();
+      console.log(this.pokemon);
     });
   }
 
@@ -45,6 +50,21 @@ export class PagePokemonComponent implements OnInit {
     if (strId.length === 3) {
       this.pokemonId = strId;
     }
+  }
+
+  private chageIndex() {
+    this.titleService.setTitle(
+      this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
+    ); //captalized string
+
+    //identify color of type
+    let type = this.typeColors.find(
+      (x: any) => x.type === this.pokemon.types[0].type.name
+    );
+    this.metaService.updateTag({
+      name: 'theme-color',
+      content: type.color,
+    });
   }
 
   public changePokemon(id: number) {
