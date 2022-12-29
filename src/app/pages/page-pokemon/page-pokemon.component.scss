@@ -1,5 +1,7 @@
 .pokebg {
   min-height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .pokebg::before {
@@ -14,6 +16,7 @@
 
 .card {
   position: relative;
+  background: none;
   &-name {
     position: relative;
   }
