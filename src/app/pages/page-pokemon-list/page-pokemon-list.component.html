@@ -1,4 +1,4 @@
-<ul *ngIf="pokemonList.length !== 0" class="list-group list-group-flush">
+<div *ngIf="pokemonList.length !== 0" class="list-group list-group-flush">
   <div class="search p-3">
     <div class="input-group">
       <button class="btn bg-branco" style="pointer-events: none" type="button">
@@ -13,15 +13,12 @@
     </div>
   </div>
   <ng-container *ngFor="let pokemon of pokemonList; let i = index">
-    <li
+    <div
       *ngIf="pokemon.name.includes(searchValue)"
-      class="pokemon list-group-item d-flex justify-content-between align-items-center"
+      class="list-group-item"
       (click)="goToPokemon(i + 1)"
     >
-      <span
-        >{{ i + 1 }} -
-        <span class="pokemon-name">{{ pokemon.name }}</span></span
-      >
-    </li>
+      {{ i + 1 }} - <span class="pokemon-name">{{ pokemon.name }}</span>
+    </div>
   </ng-container>
-</ul>
+</div>
