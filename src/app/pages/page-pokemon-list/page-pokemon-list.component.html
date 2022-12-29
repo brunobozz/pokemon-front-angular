@@ -1,17 +1,20 @@
-<div class="search p-3">
-  <input
-    [(ngModel)]="searchPokemon"
-    type="pokemon"
-    class="form-control"
-    id="search"
-    placeholder="Search Pokémon"
-  />
-</div>
-
 <ul *ngIf="pokemonList.length !== 0" class="list-group list-group-flush">
+  <div class="search p-3">
+    <div class="input-group">
+      <button class="btn bg-branco" style="pointer-events: none" type="button">
+        <i class="fa fa-search fa-fw"></i>
+      </button>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Pokémon"
+        (keyup)="searchPokemon($event)"
+      />
+    </div>
+  </div>
   <ng-container *ngFor="let pokemon of pokemonList; let i = index">
     <li
-      *ngIf="pokemon.name.includes(searchPokemon)"
+      *ngIf="pokemon.name.includes(searchValue)"
       class="pokemon list-group-item d-flex justify-content-between align-items-center"
       (click)="goToPokemon(i + 1)"
     >
@@ -22,13 +25,3 @@
     </li>
   </ng-container>
 </ul>
-<!-- <div class="text-center mt-4 mb-4">
-  <button
-    class="btn btn-primary text-center"
-    style="min-width: 200px"
-    (click)="getPokemonList(endpoint)"
-  >
-    <i *ngIf="loading" class="fa fa-spinner fa-pulse"></i>
-    <span *ngIf="!loading"> Carregar mais</span>
-  </button>
-</div> -->

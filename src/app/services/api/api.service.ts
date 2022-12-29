@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public getInfo(endPoint: string) {
+  public getData(endPoint: string) {
     return this.http.get(this.API_URL + endPoint);
   }
 
