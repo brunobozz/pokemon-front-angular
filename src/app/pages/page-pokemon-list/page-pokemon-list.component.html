@@ -14,7 +14,9 @@
   </div>
   <ng-container *ngFor="let pokemon of pokemonList; let i = index">
     <div
-      *ngIf="pokemon.name.includes(searchValue)"
+      *ngIf="
+        pokemon.name.includes(searchValue) || (i + 1).toString() == searchValue
+      "
       class="list-group-item"
       (click)="goToPokemon(i + 1)"
     >
