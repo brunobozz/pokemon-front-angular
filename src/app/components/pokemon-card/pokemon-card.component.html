@@ -1,0 +1,15 @@
+<section class="pokemon-card">
+  <app-pokemon-name
+    [id]="pokemon.id"
+    [name]="pokemon.forms[0].name"
+    [type]="pokemon.types[0].type.name"
+  ></app-pokemon-name>
+  <app-pokemon-image
+    [id]="pokemon.id"
+    [type]="pokemon.types[0].type.name"
+  ></app-pokemon-image>
+  <app-pokemon-info
+    [pokemon]="pokemon"
+    [type]="pokemon.types[0].type.name"
+  ></app-pokemon-info>
+</section>

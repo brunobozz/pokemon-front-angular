@@ -1,0 +1,22 @@
+.name {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+
+  &-title {
+    padding: 1rem 1.5rem;
+  }
+
+  * {
+    position: relative;
+    margin: 0;
+    color: #fff;
+  }
+
+  .search {
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+  }
+}

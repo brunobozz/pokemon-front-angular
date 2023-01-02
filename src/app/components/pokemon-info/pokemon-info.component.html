@@ -1,0 +1,36 @@
+<ul class="list-group list-group-flush bg-type-{{ type }}">
+  <li class="list-group-item darken3">
+    <b>Type: </b>
+    <span *ngFor="let type of pokemon.types" class="text-capitalize">
+      <img
+        src="../../assets/icons/type/{{ type.type.name }}.svg"
+        style="height: 24px"
+        title="{{ type.type.name }}"
+      />
+      <span style="margin-right: 5px">
+        {{ type.type.name }}
+      </span>
+    </span>
+  </li>
+  <li class="list-group-item darken3">
+    <b>Abilities: </b><br />
+    <span *ngFor="let abil of pokemon.abilities" class="text-capitalize">
+      <i class="fa fa-star text-warning"></i>
+      <span> {{ abil.ability.name }} </span>
+      <i
+        *ngIf="!abil.is_hidden"
+        class="fa fa-eye-slash"
+        title="Hidden Ability"
+      ></i>
+      <br />
+    </span>
+  </li>
+  <li class="list-group-item darken3">
+    <b>Height: </b>
+    <span>{{ pokemon.height }} f</span>
+  </li>
+  <li class="list-group-item darken3">
+    <b>Weight: </b>
+    <span>{{ pokemon.weight }} lbs.</span>
+  </li>
+</ul>

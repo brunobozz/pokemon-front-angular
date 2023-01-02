@@ -3,6 +3,11 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { typeColors } from './pokemon-colors';
+// import Swiper core and required modules
+import SwiperCore, { EffectFade, Swiper } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([EffectFade]);
 
 @Component({
   selector: 'app-page-pokemon',
@@ -10,7 +15,9 @@ import { typeColors } from './pokemon-colors';
   styleUrls: ['./page-pokemon.component.scss'],
 })
 export class PagePokemonComponent implements OnInit {
+  public endpoint: string = '';
   public pokemon: any = [];
+  public location: any = [];
   public pokemonId = '';
   public type: string = '';
   private typeColors = typeColors;
@@ -25,16 +32,17 @@ export class PagePokemonComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.getPokemon('pokemon/' + params['id']);
+      this.getPokemon('https://pokeapi.co/api/v2/pokemon/' + params['id']);
     });
   }
 
   public getPokemon(endpoint: string) {
-    this.api.getData(endpoint).subscribe((data: any) => {
+    this.api.getEndpoint(endpoint).subscribe((data: any) => {
       this.pokemon = data;
       this.type = data.types[0].type.name;
       this.convertPokemonId(this.pokemon.id);
-      this.chageIndexMeta();
+      this.chageIndex();
+      console.log(this.pokemon);
     });
   }
 
@@ -51,11 +59,29 @@ export class PagePokemonComponent implements OnInit {
     }
   }
 
-  private chageIndexMeta() {
-   
+  private chageIndex() {
+    this.titleService.setTitle(
+      this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
+    ); //captalized string
+
+    //identify color of type
+    let type = this.typeColors.find(
+      (x: any) => x.type === this.pokemon.types[0].type.name
+    );
+    this.metaService.updateTag({
+      name: 'theme-color',
+      content: type.color,
+    });
   }
 
   public changePokemon(id: number) {
     this.router.navigateByUrl('pokemon/' + id);
+  }
+
+  onSwiper([swiper]: any) {
+    console.log(swiper);
+  }
+  onSlideChange() {
+    console.log('slide change');
   }
 }

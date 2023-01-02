@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagePokemonListComponent } from './pages/page-pokemon-list/page-pokemon-list.component';
 import { PagePokemonComponent } from './pages/page-pokemon/page-pokemon.component';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'pokemon/:id',
-    component: PagePokemonComponent,
+    component: PokemonComponent,
+  },
+  {
+    path: 'pokemon',
+    component: PokemonComponent,
   },
 ];
 
@@ -24,4 +29,8 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const ArrayOfRoutes = [PagePokemonListComponent, PagePokemonComponent];
+export const ArrayOfRoutes = [
+  PagePokemonListComponent,
+  PagePokemonComponent,
+  PokemonComponent,
+];

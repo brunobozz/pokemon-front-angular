@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between p-2">
+  <span>Selected: {{ selectedPokemon }}</span>
+  <span>Active: {{ activeIndex }}</span>
+</div>
+
+<div class="pokemon darken5 bg-type-{{ type }}">
+  <swiper
+    [effect]="'creative'"
+    [creativeEffect]="{
+      prev: {
+        shadow: true,
+        translate: [0, 0, -400]
+      },
+      next: {
+        translate: ['100%', 0, 0]
+      }
+    }"
+    [slidesPerView]="1"
+    [speed]="200"
+    (slideChange)="onSlideChange($event)"
+    [virtual]="true"
+    class="mySwiper"
+  >
+    <ng-template *ngFor="let pokemon of pokemons" swiperSlide let-data>
+      <div>Current slide is {{ data.isActive ? "active" : "not active" }}</div>
+      <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    </ng-template>
+  </swiper>
+</div>

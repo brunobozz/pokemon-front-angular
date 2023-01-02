@@ -1,6 +1,9 @@
 @import "./custom-bootstrap-theme";
 @import "./node_modules/bootstrap/scss/bootstrap";
 
+@import "swiper/scss";
+@import "swiper/css/bundle";
+
 html,
 body {
   height: 100%;
@@ -23,4 +26,28 @@ label:focus,
   outline: 0px !important;
   -webkit-appearance: none;
   box-shadow: none !important;
+}
+
+.darken3,
+.darken5 {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+
+.darken3 {
+  &::before {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.darken5 {
+  &::before {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
