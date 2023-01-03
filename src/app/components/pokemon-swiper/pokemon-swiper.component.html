@@ -1,0 +1,13 @@
+<div class="pokemon darken5 bg-type-{{ type }}">
+  <swiper
+    [slidesPerView]="1"
+    [speed]="300"
+    (slideChange)="onSlideChange($event)"
+    [virtual]="true"
+    class="mySwiper"
+  >
+    <ng-template *ngFor="let pokemon of pokemons" swiperSlide>
+      <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    </ng-template>
+  </swiper>
+</div>

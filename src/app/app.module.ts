@@ -18,6 +18,7 @@ import { PokemonNameComponent } from './components/pokemon-name/pokemon-name.com
 import { PokemonImageComponent } from './components/pokemon-image/pokemon-image.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { PokemonSwiperComponent } from './components/pokemon-swiper/pokemon-swiper.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
     PokemonImageComponent,
     PokemonInfoComponent,
     PokemonCardComponent,
+    PokemonSwiperComponent,
   ],
   imports: [
     BrowserModule,
