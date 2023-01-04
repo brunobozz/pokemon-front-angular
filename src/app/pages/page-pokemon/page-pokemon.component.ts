@@ -52,7 +52,18 @@ export class PagePokemonComponent implements OnInit {
   }
 
   private chageIndexMeta() {
-   
+    this.titleService.setTitle(
+      this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
+    ); //captalized string
+
+    //identify color of type
+    let type = this.typeColors.find(
+      (x: any) => x.type === this.pokemon.types[0].type.name
+    );
+    this.metaService.updateTag({
+      name: 'theme-color',
+      content: type.color,
+    });
   }
 
   public changePokemon(id: number) {
